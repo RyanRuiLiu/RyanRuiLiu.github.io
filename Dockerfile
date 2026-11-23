@@ -1,4 +1,4 @@
-FROM node:24 AS build
+FROM node:26 AS build
 ARG NPM_REGISTRY=https://registry.npmmirror.com
 ENV npm_config_registry=${NPM_REGISTRY}
 WORKDIR /src
