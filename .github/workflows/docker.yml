@@ -1,0 +1,33 @@
+name: docker
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions: {}
+
+jobs:
+  docker:
+    permissions:
+      contents: read
+      packages: write
+    uses: RyanRuiLiu/.github/.github/workflows/docker.yml@52617eaa392db38edad582cf088998fc7e63fdf2
+    secrets:
+      ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+      ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+      ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
+      ACR_NAMESPACE: ${{ secrets.ACR_NAMESPACE }}
+
+  deploy:
+    needs: docker
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        env:
+          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+        run: |
+          curl -fsS --max-time 300 --retry 5 --retry-all-errors -X POST \
+            -H "X-Deploy-Token: $WEBHOOK_SECRET" \
+            "https://ryanliu.cn/hooks/deploy-personal-website"

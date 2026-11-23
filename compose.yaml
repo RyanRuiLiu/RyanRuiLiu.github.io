@@ -1,0 +1,17 @@
+services:
+  personal-website:
+    image: crpi-5rhaq5x8z5ec9tig-vpc.cn-hangzhou.personal.cr.aliyuncs.com/ryanruiliu/ryanruiliu.github.io:${TAG:?TAG must be set}
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
