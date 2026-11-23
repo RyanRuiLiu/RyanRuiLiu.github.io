@@ -1,0 +1,14 @@
+name: retention
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  packages: write
+
+jobs:
+  cleanup:
+    uses: RyanRuiLiu/.github/.github/workflows/retention.yml@901ff9545144ff3bbdc3b53902093e2b0f30f3dc
+    secrets: inherit
