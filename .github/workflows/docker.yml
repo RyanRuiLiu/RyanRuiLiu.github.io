@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: RyanRuiLiu/.github/.github/workflows/docker.yml@52617eaa392db38edad582cf088998fc7e63fdf2
+    uses: RyanRuiLiu/.github/.github/workflows/docker.yml@d77ab28fc191b7c00b61318cf0d6cdb6867d8902
     secrets:
       ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
       ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
@@ -23,6 +23,9 @@ jobs:
     needs: docker
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-personal-website
+      cancel-in-progress: false
     steps:
       - name: Deploy
         env:
