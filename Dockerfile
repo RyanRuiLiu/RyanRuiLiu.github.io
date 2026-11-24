@@ -5,7 +5,7 @@ WORKDIR /src
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN npm run build -- --site https://ryanliu.cn
+RUN npm run build:site
 FROM caddy:2.11.9
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=build /src/dist /srv
