@@ -1,34 +1,45 @@
 // @ts-check
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import vue from "@astrojs/vue";
+import tailwindcss from "@tailwindcss/vite";
+import { loadEnv } from "vite";
 
-import sitemap from '@astrojs/sitemap';
-import { defineConfig, fontProviders } from 'astro/config';
+const { SITE_URL = "https://ryanliu.cn" } = loadEnv(
+  process.env.NODE_ENV ?? "production",
+  process.cwd(),
+  "SITE_URL",
+);
+const site = new URL(SITE_URL);
+if (
+  !["http:", "https:"].includes(site.protocol) ||
+  site.pathname !== "/" ||
+  site.search ||
+  site.hash ||
+  site.username ||
+  site.password
+) {
+  throw new Error(
+    "SITE_URL must be an HTTP(S) origin, such as https://example.com, without a path, credentials, query, or fragment.",
+  );
+}
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://ryanruiliu.github.io',
-	integrations: [sitemap()],
-	fonts: [
-		{
-			provider: fontProviders.local(),
-			name: 'Atkinson',
-			cssVariable: '--font-atkinson',
-			fallbacks: ['sans-serif'],
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/atkinson-regular.woff'],
-						weight: 400,
-						style: 'normal',
-						display: 'swap',
-					},
-					{
-						src: ['./src/assets/fonts/atkinson-bold.woff'],
-						weight: 700,
-						style: 'normal',
-						display: 'swap',
-					},
-				],
-			},
-		},
-	],
+  site: site.href,
+  output: "static",
+  trailingSlash: "always",
+  compressHTML: true,
+  integrations: [
+    vue(),
+    sitemap({
+      filter: (page) =>
+        !["/404/", "/404.html", "/articles/", "/comments/"].includes(
+          new URL(page).pathname,
+        ),
+    }),
+  ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

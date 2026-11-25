@@ -3,18 +3,51 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.23.4"
+    "node": ">=26",
+    "pnpm": ">=12.23.0"
   },
+  "packageManager": "pnpm@12.23.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "build:site": "astro build --site https://ryanliu.cn",
+    "build": "pnpm check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro sync && astro check && vue-tsc --noEmit",
+    "test": "pnpm build && playwright test",
+    "test:e2e": "playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.6",
-    "astro": "^7.4.13"
+    "@astrojs/vue": "^7.1.6",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@fontsource-variable/noto-sans": "5.3.0",
+    "@fontsource-variable/noto-sans-sc": "5.3.1",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
+    "tailwindcss": "^4.3.5",
+    "vue": "^3.5.46"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@iconify-json/basil": "^1.2.4",
+    "@iconify-json/bx": "^1.2.3",
+    "@iconify-json/jam": "^1.2.3",
+    "@iconify-json/lucide": "^1.2.159",
+    "@iconify-json/material-symbols": "^1.2.101",
+    "@iconify-json/mingcute": "^1.2.10",
+    "@iconify-json/mynaui": "^1.2.20",
+    "@iconify-json/simple-icons": "^1.2.104",
+    "@iconify/tailwind4": "^1.2.3",
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.10",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vue-tsc": "^3.3.14"
   }
 }
