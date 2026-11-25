@@ -15,7 +15,7 @@ export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
-  workers: 3,
+  workers: process.env.CI ? 3 : 8,
   retries: process.env.CI ? 2 : 0,
   reporter: "list",
   use: {

@@ -271,8 +271,8 @@ function tilt(id: string) {
                 v-for="item in ['🌸', '✨', '☕', '🍀', '💖']"
                 :key="item"
                 type="button"
-                @click="emoji(item)"
                 :aria-label="t('guestbook.insertEmoji', { emoji: item })"
+                @click="emoji(item)"
               >
                 {{ item }}
               </button>
@@ -308,10 +308,10 @@ function tilt(id: string) {
           <button
             type="button"
             class="sort-button"
-            @click="newestFirst = !newestFirst"
             :aria-label="
               newestFirst ? t('guestbook.sortOld') : t('guestbook.sortNew')
             "
+            @click="newestFirst = !newestFirst"
           >
             <span class="icon-[lucide--arrow-down-up]" aria-hidden="true"></span
             >{{ newestFirst ? t("guestbook.newest") : t("guestbook.oldest") }}
@@ -321,8 +321,8 @@ function tilt(id: string) {
           <div class="note-grid">
             <article
               v-for="message in orderedMessages"
-              :key="message.id"
               :id="`note-${message.id}`"
+              :key="message.id"
               class="message sticky-note paper"
               :class="{ 'just-posted': freshId === message.id }"
               :data-color="message.color"
@@ -333,9 +333,9 @@ function tilt(id: string) {
               <button
                 type="button"
                 class="remove-note"
-                @click="remove(message.id)"
                 :aria-label="t('guestbook.delete', { name: message.name })"
                 :title="t('guestbook.remove')"
+                @click="remove(message.id)"
               >
                 <span class="icon-[lucide--x]" aria-hidden="true"></span>
               </button>

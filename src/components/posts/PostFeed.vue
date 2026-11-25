@@ -46,7 +46,8 @@ function syncUrl() {
     q: query.value.trim(),
     page: page.value > 1 ? String(page.value) : "",
   })) {
-    value ? url.searchParams.set(key, value) : url.searchParams.delete(key);
+    if (value) url.searchParams.set(key, value);
+    else url.searchParams.delete(key);
   }
   window.history.replaceState(null, "", url);
 }
@@ -108,10 +109,10 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
         ><span class="icon-[lucide--search]"></span
         ><input
           v-model="query"
-          @input="search"
           type="search"
           :aria-label="t('post.filter')"
           :placeholder="t('post.filterPlaceholder')"
+          @input="search"
       /></label>
     </div>
     <div v-else class="feed-title">
@@ -212,26 +213,26 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
       :aria-label="t('post.pagination')"
     >
       <button
-        @click="turnPage(page - 1)"
         :disabled="page === 1"
         :aria-label="t('post.previousPage')"
+        @click="turnPage(page - 1)"
       >
         <span class="icon-[lucide--chevron-left]"></span>
       </button>
       <button
         v-for="index in totalPages"
         :key="index"
-        @click="turnPage(index)"
         :class="{ current: page === index }"
         :aria-current="page === index ? 'page' : undefined"
         :aria-label="t('post.page', { count: index })"
+        @click="turnPage(index)"
       >
         {{ index }}
       </button>
       <button
-        @click="turnPage(page + 1)"
         :disabled="page === totalPages"
         :aria-label="t('post.nextPage')"
+        @click="turnPage(page + 1)"
       >
         <span class="icon-[lucide--chevron-right]"></span>
       </button>

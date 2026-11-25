@@ -8,3 +8,6 @@ node_modules
 .env.*
 README.md
 AGENTS.md
+.playwright-mcp
+test-results
+playwright-report

@@ -4,7 +4,7 @@
   <div class="w-full overflow-hidden leading-none">
     <!-- Wave SVG -->
     <svg
-      class="relative w-full h-[15vh] min-h-[100px] max-h-[150px] -mb-[7px]"
+      class="relative -mb-[7px] h-[15vh] max-h-[150px] min-h-[100px] w-full"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 24 150 28"
       preserveAspectRatio="none"

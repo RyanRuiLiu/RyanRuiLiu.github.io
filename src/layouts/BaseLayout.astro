@@ -84,7 +84,9 @@ const showFiling = import.meta.env.PUBLIC_SHOW_ICP === "true";
         let theme;
         try {
           theme = localStorage.getItem("theme");
-        } catch {}
+        } catch {
+          // localStorage 可能被浏览器禁用。
+        }
         document.documentElement.classList.toggle(
           "dark",
           theme === "dark" ||

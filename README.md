@@ -4,15 +4,16 @@ Ryan Liu 的个人网站，部署于 [ryanliu.cn](https://ryanliu.cn)，基于 A
 
 ## 技术栈
 
-| 类别 | 选型                                  |
-| ---- | ------------------------------------- |
-| 框架 | Astro 7（静态输出）                   |
-| 交互 | Vue 3                                 |
-| 样式 | Tailwind CSS 4、自定义 CSS 变量       |
-| 内容 | Astro Content Collections（Markdown） |
-| 图标 | Iconify（按需本地图标集）             |
-| 字体 | 本地 woff2（见「字体与许可」）        |
-| 测试 | Playwright                            |
+| 类别 | 选型                                      |
+| ---- | ----------------------------------------- |
+| 框架 | Astro 7（静态输出）                       |
+| 交互 | Vue 3                                     |
+| 样式 | Tailwind CSS 4、自定义 CSS 变量           |
+| 内容 | Astro Content Collections（Markdown）     |
+| 图标 | Iconify（按需本地图标集）                 |
+| 字体 | 本地 woff2（见「字体与许可」）            |
+| 检查 | ESLint、Stylelint、markdownlint、Prettier |
+| 测试 | Playwright                                |
 
 ## 环境要求
 
@@ -40,6 +41,12 @@ pnpm dev
 | `pnpm check`        | 生成内容类型并执行 Astro 与 Vue 类型检查 |
 | `pnpm format`       | 使用 Prettier 格式化                     |
 | `pnpm format:check` | 检查格式                                 |
+| `pnpm lint`         | 使用 ESLint 检查脚本与组件               |
+| `pnpm lint:fix`     | 自动修复 ESLint 问题                     |
+| `pnpm lint:css`     | 使用 Stylelint 检查样式                  |
+| `pnpm lint:md`      | 使用 markdownlint 检查 Markdown          |
+| `pnpm verify:quick` | 快速验证：格式、检查与构建，不跑测试     |
+| `pnpm verify`       | 全量验证：快速验证加 Playwright 测试     |
 | `pnpm test`         | 构建后运行全部 Playwright 测试           |
 | `pnpm test:e2e`     | 在已有 `dist/` 上运行 Playwright 测试    |
 
@@ -69,6 +76,11 @@ pnpm dev
 │   ├── config.ts            # 站点信息聚合
 │   └── site.config.json     # 站点名称、作者、导航、社交链接、备案信息
 ├── tests/                   # Playwright 测试
+├── astro.config.ts          # Astro 配置
+├── eslint.config.ts         # ESLint 配置
+├── stylelint.config.ts      # Stylelint 配置
+├── .prettierrc.json         # Prettier 配置
+├── .markdownlint-cli2.jsonc # markdownlint 配置
 ├── Caddyfile                # 容器内静态文件服务配置
 ├── compose.yaml             # 服务器部署编排
 └── Dockerfile               # 镜像构建
@@ -94,9 +106,22 @@ featured: false
 - `lang` 默认 `zh-CN`，当前站点只发布该语言的内容。
 - `draft: true` 的文章不会出现在列表、搜索与 RSS 中。
 
+## 代码检查
+
+- `pnpm lint`：ESLint 检查脚本、Vue 组件与 Astro 页面。
+- `pnpm lint:css`：Stylelint 检查 CSS、Vue 与 Astro 的样式块。
+- `pnpm lint:md`：markdownlint 检查 Markdown。
+- `pnpm format`：Prettier 统一格式，并负责 Astro 文件与 Tailwind 类名排序。
+
+Prettier 与 ESLint 的格式规则冲突由 `eslint-config-prettier` 关闭；Stylelint 使用 `stylelint-config-recommended`，不含格式规则；Markdown 关闭行长度规则以匹配 Prettier 的 `proseWrap: preserve`。
+
+日常改动运行 `pnpm verify:quick`；交付前运行 `pnpm verify`。`build` 已包含类型检查，两个验证命令都不会重复执行。
+
 ## 测试
 
 Playwright 在桌面与移动两个视口中并行运行，覆盖首页分页与筛选、搜索、主题切换、留言墙存储、文章结构、SEO 元数据、sitemap 与 RSS 一致性等场景。
+
+本地默认使用 8 个 worker，CI 使用 3 个。若本地终端设置了 `CI=true`，Playwright 会按 CI 配置运行；此时可先清除该变量再执行本地验证。
 
 ```bash
 pnpm exec playwright install chromium
@@ -108,11 +133,14 @@ pnpm test
 推送 `main` 触发两条独立链路：
 
 - **GitHub Pages**：`.github/workflows/deploy.yml` 使用 `withastro/action` 构建并发布，作为镜像站点。
-- **自建服务器**：`.github/workflows/docker.yml` 调用共享工作流构建镜像并推送至阿里云 ACR，成功后以 HMAC 签名的请求调用 `https://ryanliu.cn/hooks/deploy-personal-website` 完成部署。服务器侧由 Caddy 反向代理至容器。
+- **自建服务器**：`.github/workflows/docker.yml` 调用共享工作流构建镜像并推送至阿里云
+  ACR，成功后以 HMAC 签名的请求调用
+  `https://ryanliu.cn/hooks/deploy-personal-website`
+  完成部署。服务器侧由 Caddy 反向代理至容器。
 
 镜像构建使用 `pnpm fetch` 与离线安装，构建阶段写入 `SITE_URL`，并开启 `PUBLIC_SHOW_ICP`，因此备案信息只在自建域名部署中显示。
 
-CI 位于 `.github/workflows/ci.yml`，执行格式检查、依赖审计、类型检查、构建与 Playwright 测试。
+CI 位于 `.github/workflows/ci.yml`，执行格式检查、脚本与组件检查、样式检查、Markdown 检查、依赖审计、类型检查、构建与 Playwright 测试。
 
 ## 字体与许可
 

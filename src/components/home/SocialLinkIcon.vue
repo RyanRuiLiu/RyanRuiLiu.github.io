@@ -1,6 +1,6 @@
 <template>
   <span
-    class="flex items-center justify-center bg-subBoxLight dark:bg-subBoxDark h-6 w-6 text-2xl text-subTextLight dark:text-subTextDark rounded-xl hover:shadow-lg transition-all duration-300"
+    class="flex h-6 w-6 items-center justify-center rounded-xl bg-subBoxLight text-2xl text-subTextLight transition-all duration-300 hover:shadow-lg dark:bg-subBoxDark dark:text-subTextDark"
   >
     <slot></slot>
   </span>

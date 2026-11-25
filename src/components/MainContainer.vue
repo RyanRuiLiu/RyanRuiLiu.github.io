@@ -3,7 +3,7 @@
 <template>
   <div class="flex flex-col">
     <div
-      class="main-container flex-1 relative text-kanadeDark bg-kanadeLight dark:bg-kanadeDark dark:text-kanadeLight"
+      class="main-container relative flex-1 bg-kanadeLight text-kanadeDark dark:bg-kanadeDark dark:text-kanadeLight"
     >
       <slot />
     </div>

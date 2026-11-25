@@ -48,9 +48,9 @@ onUnmounted(() => {
         }}<span class="brand-dot">.</span></a
       >
       <nav
+        id="main-navigation"
         :aria-label="t('nav.main')"
         :class="{ expanded: menuOpen }"
-        id="main-navigation"
       >
         <a
           v-for="item in headerConfig.navLinks"
@@ -65,16 +65,16 @@ onUnmounted(() => {
       </nav>
       <div class="nav-actions">
         <button
-          @click="openSearch"
           :aria-label="t('nav.search')"
           :title="t('nav.searchHint')"
+          @click="openSearch"
         >
           <span class="icon-[lucide--search]"></span>
         </button>
         <button
-          @click="toggle"
           :aria-label="isDark ? t('nav.light') : t('nav.dark')"
           :title="t('nav.theme')"
+          @click="toggle"
         >
           <span
             :class="isDark ? 'icon-[lucide--moon]' : 'icon-[lucide--sun]'"
@@ -82,10 +82,10 @@ onUnmounted(() => {
         </button>
         <button
           class="menu-toggle"
-          @click="menuOpen = !menuOpen"
           :aria-expanded="menuOpen"
           aria-controls="main-navigation"
           :aria-label="menuOpen ? t('nav.closeMenu') : t('nav.openMenu')"
+          @click="menuOpen = !menuOpen"
         >
           <span
             :class="menuOpen ? 'icon-[lucide--x]' : 'icon-[lucide--menu]'"

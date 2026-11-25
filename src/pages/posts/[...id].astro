@@ -180,9 +180,8 @@ const older = posts[index + 1];
       tocLinks.forEach((link) => {
         const selected = link.dataset.heading === current;
         link.classList.toggle("active", selected);
-        selected
-          ? link.setAttribute("aria-current", "location")
-          : link.removeAttribute("aria-current");
+        if (selected) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
       });
     };
     window.addEventListener("scroll", update, { passive: true });
