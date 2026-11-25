@@ -115,7 +115,7 @@ featured: false
 
 Prettier 与 ESLint 的格式规则冲突由 `eslint-config-prettier` 关闭；Stylelint 使用 `stylelint-config-recommended`，不含格式规则；Markdown 关闭行长度规则以匹配 Prettier 的 `proseWrap: preserve`。
 
-日常改动运行 `pnpm verify:quick`；交付前运行 `pnpm verify`。`build` 已包含类型检查，两个验证命令都不会重复执行。
+日常改动运行 `pnpm verify:quick`；交付前运行 `pnpm verify`。类型检查由 `build` 执行一次。
 
 ## 测试
 

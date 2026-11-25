@@ -1,10 +1,9 @@
 {
-  // AGENTS.md 按项目要求保持原样，不参与 Markdown 检查。
+  // AGENTS.md 不参与 Markdown 检查。
   "globs": ["**/*.md"],
   "ignores": ["node_modules", "AGENTS.md"],
   "config": {
-    // Prettier 默认不重排 Markdown 正文（proseWrap: preserve），
-    // 中文段落也不宜按列硬换行，因此关闭行长规则，其余规则保留。
+    // Prettier 默认不重排 Markdown 正文；中文段落不宜按列硬换行。
     "MD013": false
   }
 }

@@ -32,7 +32,7 @@ export default [
   },
   {
     rules: {
-      // 组件名沿用主题既有命名，均为页面内单实例组件。
+      // 页面级单实例组件，不强制多词命名。
       "vue/multi-word-component-names": "off",
     },
   },
