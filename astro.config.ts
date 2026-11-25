@@ -29,6 +29,7 @@ export default defineConfig({
   output: "static",
   trailingSlash: "always",
   compressHTML: true,
+  devToolbar: { enabled: false },
   integrations: [
     vue(),
     sitemap({
