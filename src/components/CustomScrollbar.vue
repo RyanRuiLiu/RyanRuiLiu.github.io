@@ -24,7 +24,7 @@ const startY = ref(0);
 const startScrollTop = ref(0);
 const showScrollbar = ref(false);
 const isDark = ref(false);
-const isMouseInPage = ref(false);
+const isMouseInPage = ref(true);
 let initializationTimer: ReturnType<typeof setTimeout> | undefined;
 let contentObserver: MutationObserver | undefined;
 let themeObserver: MutationObserver | undefined;
@@ -83,7 +83,10 @@ const onDrag = (e: MouseEvent) => {
   if (maxThumbPosition <= 0) return;
 
   const scrollDelta = (deltaY / maxThumbPosition) * maxScroll;
-  window.scrollTo(0, startScrollTop.value + scrollDelta);
+  window.scrollTo({
+    top: startScrollTop.value + scrollDelta,
+    behavior: "instant",
+  });
 };
 
 const stopDrag = () => {
@@ -152,8 +155,7 @@ onUnmounted(() => {
   z-index: 40;
   transition:
     width 0.2s ease,
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.3s ease;
   opacity: 0;
   transform: translateX(20px);
   pointer-events: auto;
@@ -174,6 +176,9 @@ onUnmounted(() => {
   opacity: 1 !important;
   background: linear-gradient(135deg, #ff7eb3 0%, #ff9ec8 50%, #ffb8d9 100%);
   box-shadow: 0 4px 12px rgba(255, 126, 179, 0.5);
+}
+.custom-scrollbar-thumb.is-dragging {
+  transition: none;
 }
 
 /* Dark theme */

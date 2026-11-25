@@ -140,7 +140,6 @@ nav {
 nav a {
   display: flex;
   align-items: center;
-  position: relative;
   gap: 7px;
   padding: 22px 13px;
   font-size: 15px;
@@ -150,15 +149,18 @@ nav a:hover,
 nav a.active {
   opacity: 1;
 }
-nav a.active::after {
+nav a > span:last-child {
+  position: relative;
+}
+nav a.active > span:last-child::after {
   content: "";
   position: absolute;
-  bottom: 13px;
+  bottom: -9px;
+  left: 0;
+  width: 100%;
   height: 3px;
-  width: 19px;
   border-radius: 2px;
   background: currentColor;
-  left: calc(50% - 9px);
 }
 .nav-actions {
   display: flex;
@@ -230,7 +232,7 @@ nav a.active::after {
     background: var(--accent-soft);
     color: var(--accent);
   }
-  nav a.active::after {
+  nav a.active > span:last-child::after {
     display: none;
   }
 }

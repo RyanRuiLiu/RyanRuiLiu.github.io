@@ -57,6 +57,7 @@ html[data-theme-changing] *::after {
   transition: none !important;
 }
 html {
+  scrollbar-width: none;
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
 }
@@ -112,6 +113,9 @@ button:disabled {
 ::selection {
   background: #f6c8d6;
   color: #593546;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 ::-webkit-scrollbar {
   width: 7px;

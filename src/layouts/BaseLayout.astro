@@ -6,6 +6,7 @@ import Navigation from "../components/header/Navigation.vue";
 import Welcome from "../components/header/Welcome.astro";
 import Search from "../components/header/Search.vue";
 import MainContainer from "../components/MainContainer.vue";
+import CustomScrollbar from "../components/CustomScrollbar.vue";
 import { getPosts, summarize } from "../lib/posts";
 interface Props {
   title?: string;
@@ -145,6 +146,7 @@ const showFiling = import.meta.env.PUBLIC_SHOW_ICP === "true";
     >
       <span class="icon-[lucide--arrow-up]"></span>
     </button>
+    <CustomScrollbar client:media="(hover: hover)" />
     <script>
       const button = document.querySelector<HTMLButtonElement>("#back-top");
       const update = () => {
