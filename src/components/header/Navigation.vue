@@ -4,7 +4,30 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { headerConfig } from "../../config";
 import { initTheme, toggleTheme } from "../../scripts/theme";
 const props = defineProps<{ pathname: string }>();
+const isHome = props.pathname === "/";
 const isDark = ref(false);
+const brandTitle = headerConfig.title;
+const typedCount = ref(brandTitle.length);
+let brandTimer: ReturnType<typeof setTimeout> | undefined;
+const scheduleBrand = (step: () => void, delay: number) => {
+  brandTimer = setTimeout(step, delay);
+};
+const typeBrand = () => {
+  if (typedCount.value < brandTitle.length) {
+    typedCount.value += 1;
+    scheduleBrand(typeBrand, 120);
+    return;
+  }
+  scheduleBrand(eraseBrand, 2400);
+};
+const eraseBrand = () => {
+  if (typedCount.value > 0) {
+    typedCount.value -= 1;
+    scheduleBrand(eraseBrand, 60);
+    return;
+  }
+  scheduleBrand(typeBrand, 600);
+};
 const isAtTop = ref(true);
 const menuOpen = ref(false);
 const active = (url: string) =>
@@ -27,8 +50,15 @@ onMounted(() => {
   handleScroll();
   window.addEventListener("scroll", handleScroll, { passive: true });
   window.addEventListener("keydown", handleKey);
+  if (
+    isHome &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    scheduleBrand(eraseBrand, 1600);
+  }
 });
 onUnmounted(() => {
+  clearTimeout(brandTimer);
   window.removeEventListener("scroll", handleScroll);
   window.removeEventListener("keydown", handleKey);
 });
@@ -43,9 +73,18 @@ onUnmounted(() => {
       <a
         href="/"
         class="brand"
+        :class="{ 'brand--loop': isHome }"
         :aria-label="t('nav.brandHome', { site: headerConfig.title })"
-        ><span class="brand-flower">✿</span>{{ headerConfig.title
-        }}<span class="brand-dot">.</span></a
+        ><span class="brand-flower">✿</span>
+        <span class="brand-typing">
+          <span class="brand-placeholder" aria-hidden="true"
+            >{{ headerConfig.title }}.</span
+          >
+          <span class="brand-typed" aria-hidden="true"
+            >{{ headerConfig.title.slice(0, typedCount)
+            }}<span class="brand-caret">.</span></span
+          >
+        </span></a
       >
       <nav
         id="main-navigation"
@@ -127,10 +166,43 @@ onUnmounted(() => {
   font-size: 29px;
   font-family: var(--font-body);
   font-weight: 400;
+  letter-spacing: normal;
 }
-.brand-dot {
+.brand-typing {
+  position: relative;
+  display: block;
+}
+.brand-placeholder {
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.brand-typed {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+}
+.brand-caret {
   color: #ffb4ca;
-  margin-left: -7px;
+}
+.brand--loop .brand-caret {
+  animation: brand-caret 1s steps(1, end) infinite;
+}
+@keyframes brand-caret {
+  0%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand--loop .brand-caret {
+    animation: none;
+  }
 }
 nav {
   display: flex;
