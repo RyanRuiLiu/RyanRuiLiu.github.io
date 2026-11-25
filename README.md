@@ -11,7 +11,7 @@ Ryan Liu 的个人网站，部署于 [ryanliu.cn](https://ryanliu.cn)，基于 A
 | 样式 | Tailwind CSS 4、自定义 CSS 变量           |
 | 内容 | Astro Content Collections（Markdown）     |
 | 图标 | Iconify（按需本地图标集）                 |
-| 字体 | 本地 woff2（见「字体与许可」）            |
+| 字体 | 系统字体，不加载网络字体                  |
 | 检查 | ESLint、Stylelint、markdownlint、Prettier |
 | 测试 | Playwright                                |
 
@@ -63,7 +63,7 @@ pnpm dev
 ```text
 .
 ├── .github/workflows/       # Pages 部署、镜像构建、CI
-├── public/                  # 字体、图片、站点图标、备案图标
+├── public/                  # 图片、站点图标、备案图标
 ├── src/
 │   ├── components/          # 页头、搜索、侧栏、文章列表、留言墙等组件
 │   ├── content/posts/       # Markdown 文章
@@ -141,13 +141,3 @@ pnpm test
 镜像构建使用 `pnpm fetch` 与离线安装，构建阶段写入 `SITE_URL`，并开启 `PUBLIC_SHOW_ICP`，因此备案信息只在自建域名部署中显示。
 
 CI 位于 `.github/workflows/ci.yml`，执行格式检查、脚本与组件检查、样式检查、Markdown 检查、依赖审计、类型检查、构建与 Playwright 测试。
-
-## 字体与许可
-
-站点字体以本地文件提供，位于 `public/fonts/`：
-
-- Oxanium（`Oxanium-Medium.woff2`）
-- ZaoZiGongFangYueYuan（`ZaoZiGongFangYueYuan.woff2`）
-- JetBrains Mono、Noto Sans、Noto Sans SC（通过 Fontsource 引入）
-
-JetBrains Mono 与 Noto Sans 系列的授权文本见 `public/fonts/licenses/`。

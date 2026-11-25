@@ -256,6 +256,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -264,15 +265,13 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   color: var(--accent);
 }
 .feed-title small {
-  font:
-    9px "Oxanium-Medium",
-    var(--font-body);
+  font: 9px var(--font-narrow);
   letter-spacing: 0.12em;
   margin-left: 5px;
   color: var(--muted);
 }
 .feed-count {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .feed-tabs {
@@ -303,9 +302,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
 .feed-tabs button > span {
   display: inline-block;
   margin-left: 5px;
-  font:
-    10px "Oxanium-Medium",
-    var(--font-body);
+  font: 10px var(--font-narrow);
   padding: 0 4px;
   border-radius: 3px;
   background: #ffffff25;
@@ -351,7 +348,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   flex-wrap: wrap;
   align-items: center;
   gap: 7px;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .post-kicker a {
@@ -370,6 +367,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   color: var(--line);
 }
 .post-info h3 {
+  font-family: var(--font-display);
   font-size: 17px;
   line-height: 1.65;
   font-weight: 600;
@@ -394,7 +392,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   justify-content: space-between;
   margin-top: auto;
   gap: 8px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .post-tags {
   display: flex;
@@ -434,7 +432,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   place-items: center;
   background: var(--card);
   color: var(--muted);
-  font-family: "Oxanium-Medium", var(--font-body);
+  font-family: var(--font-narrow);
   font-size: 12px;
 }
 .pagination button.current {
@@ -443,7 +441,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   color: white;
 }
 .pagination > span {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-left: 8px;
 }
@@ -452,7 +450,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   align-items: center;
   justify-content: center;
   gap: 12px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 24px;
 }
@@ -519,7 +517,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
   }
   .feed-tabs button {
     padding: 7px 9px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .post-card {
     grid-template-columns: 29% minmax(0, 1fr);
@@ -533,11 +531,11 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
     margin: 6px 0;
   }
   .post-description {
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 10px;
   }
   .post-kicker {
-    font-size: 9px;
+    font-size: 12px;
     gap: 5px;
   }
   .cover-link :deep(strong) {

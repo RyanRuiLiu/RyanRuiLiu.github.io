@@ -460,6 +460,7 @@ function tilt(id: string) {
 }
 .wall-heading h2 {
   margin: 6px 0 10px;
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -503,9 +504,7 @@ function tilt(id: string) {
   letter-spacing: 0.12em;
 }
 .wall-stamp small {
-  font:
-    7px "Oxanium-Medium",
-    var(--font-body);
+  font: 9px var(--font-narrow);
   letter-spacing: 0.18em;
 }
 .wall-layout {
@@ -539,9 +538,7 @@ function tilt(id: string) {
   font-size: 18px;
 }
 .compose-step {
-  font:
-    7px "Oxanium-Medium",
-    var(--font-body);
+  font: 9px var(--font-narrow);
   color: var(--muted);
   letter-spacing: 0.07em;
 }
@@ -552,7 +549,7 @@ function tilt(id: string) {
   min-width: 0;
 }
 .color-picker legend {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-bottom: 11px;
 }
@@ -603,7 +600,7 @@ function tilt(id: string) {
 .color-name {
   margin-left: auto;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   white-space: nowrap;
 }
 .paper {
@@ -721,7 +718,7 @@ function tilt(id: string) {
 }
 .field-label {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--paper-muted);
   margin: 4px 0 6px;
 }
@@ -766,11 +763,11 @@ textarea.paper-input {
   justify-content: space-between;
   gap: 5px;
   padding-top: 10px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--paper-muted);
 }
 .writing-bottom > span:last-child {
-  font-family: "Oxanium-Medium", var(--font-body);
+  font-family: var(--font-narrow);
 }
 .message-toolbar {
   display: flex;
@@ -780,7 +777,7 @@ textarea.paper-input {
   margin: 15px 0;
 }
 .message-toolbar > span {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
 }
 .emoji-buttons {
@@ -811,7 +808,7 @@ textarea.paper-input {
 }
 .form-feedback,
 .form-error {
-  font-size: 11px;
+  font-size: 12px;
   margin: 12px 0 0;
   line-height: 1.8;
 }
@@ -831,7 +828,7 @@ textarea.paper-input {
   padding-top: 17px;
   margin-top: 18px;
   border-top: 1px dashed var(--line);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.9;
 }
@@ -877,7 +874,7 @@ textarea.paper-input {
 }
 .note-count {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   margin-left: 3px;
 }
 .sort-button {
@@ -887,7 +884,7 @@ textarea.paper-input {
   border: 0;
   color: var(--muted);
   background: transparent;
-  font-size: 10px;
+  font-size: 12px;
   flex-shrink: 0;
   padding: 5px 0 5px 8px;
 }
@@ -938,9 +935,7 @@ textarea.paper-input {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  font:
-    9px "Oxanium-Medium",
-    var(--font-body);
+  font: 12px var(--font-narrow);
   color: var(--paper-muted);
   margin: 3px 0 17px;
   letter-spacing: 0.06em;
@@ -979,7 +974,7 @@ textarea.paper-input {
   margin-top: 24px;
   border-top: 1px dashed var(--paper-line);
   color: var(--paper-muted);
-  font-size: 9px;
+  font-size: 12px;
 }
 .note-author {
   display: flex;
@@ -988,7 +983,7 @@ textarea.paper-input {
   min-width: 0;
 }
 .note-author strong {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   overflow-wrap: anywhere;
 }
@@ -999,7 +994,7 @@ textarea.paper-input {
   place-items: center;
   background: #ffffff40;
   border-radius: 50%;
-  font-size: 11px;
+  font-size: 12px;
   flex-shrink: 0;
 }
 .note-author img {
@@ -1007,8 +1002,8 @@ textarea.paper-input {
   flex-shrink: 0;
 }
 .note-footer time {
-  font-family: "Oxanium-Medium", var(--font-body);
-  font-size: 8px;
+  font-family: var(--font-narrow);
+  font-size: 12px;
 }
 .remove-note {
   position: absolute;
@@ -1066,7 +1061,7 @@ textarea.paper-input {
   margin: 0 0 17px;
 }
 .inspiration-sign {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--paper-muted);
   margin-top: auto;
 }
@@ -1103,7 +1098,7 @@ textarea.paper-input {
   color: var(--accent);
 }
 .empty-note > span:nth-last-child(2) {
-  font-size: 10px;
+  font-size: 12px;
 }
 .empty-arrow {
   position: absolute;
@@ -1123,7 +1118,7 @@ textarea.paper-input {
 }
 .board-bottom p {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
   margin: 0;
 }
@@ -1140,7 +1135,7 @@ textarea.paper-input {
   gap: 8px;
   margin: 28px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 .wall-footnote > span {
   color: var(--accent);
@@ -1176,7 +1171,7 @@ textarea.paper-input {
     gap: 12px;
   }
   .wall-heading .eyebrow {
-    font-size: 8px;
+    font-size: 10px;
   }
   .wall-heading h2 {
     font-size: 24px;
@@ -1186,7 +1181,7 @@ textarea.paper-input {
     margin-left: 5px;
   }
   .wall-heading p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .wall-stamp {
     display: none;
@@ -1228,7 +1223,7 @@ textarea.paper-input {
     font-size: 14px;
   }
   .note-count {
-    font-size: 9px;
+    font-size: 12px;
   }
   .wall-canvas {
     padding: 30px 24px 22px;

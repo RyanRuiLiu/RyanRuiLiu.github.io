@@ -110,9 +110,7 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   position: absolute;
   top: 13px;
   left: 15px;
-  font:
-    7px "Oxanium-Medium",
-    var(--font-body);
+  font: 9px var(--font-narrow);
   letter-spacing: 0.14em;
   opacity: 0.6;
 }
@@ -123,16 +121,12 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   opacity: 0.86;
 }
 strong {
-  font:
-    600 25px "Oxanium-Medium",
-    var(--font-body);
+  font: 600 25px var(--font-display);
   letter-spacing: -0.6px;
   white-space: nowrap;
 }
 small {
-  font:
-    6px "Oxanium-Medium",
-    var(--font-body);
+  font: 9px var(--font-narrow);
   letter-spacing: 0.12em;
   margin-top: 9px;
   opacity: 0.75;

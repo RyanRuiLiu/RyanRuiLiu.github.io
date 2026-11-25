@@ -11,27 +11,20 @@
   --color-subTextLight: #ee8ca2;
   --color-subBoxDark: #343044;
   --color-subTextDark: #eeb0c2;
-  --font-Oxanium-Medium: "Oxanium-Medium", var(--font-body);
-}
-@font-face {
-  font-family: "ZaoZiGongFangYueYuan";
-  src: url("/fonts/ZaoZiGongFangYueYuan.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Oxanium-Medium";
-  src: url("/fonts/Oxanium-Medium.woff2") format("woff2");
-  font-weight: 500 800;
-  font-style: normal;
-  font-display: swap;
 }
 :root {
   --font-body:
-    "ZaoZiGongFangYueYuan", "Noto Sans SC Variable", "Noto Sans Variable",
-    sans-serif;
-  --font-code: "JetBrains Mono Variable", "Noto Sans SC Variable", monospace;
+    "Segoe UI", system-ui, "Helvetica Neue", "PingFang SC", "Microsoft YaHei",
+    "Noto Sans CJK SC", sans-serif;
+  --font-display:
+    Georgia, "Times New Roman", ui-serif, "STZhongsong", "Songti SC", "STSong",
+    "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", serif;
+  --font-narrow:
+    "Bahnschrift", "Avenir Next Condensed", "DIN Alternate", "DIN Condensed",
+    var(--font-body);
+  --font-code:
+    ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono",
+    "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", monospace;
   --bg: #fff1f1;
   --card: #fff;
   --text: #4c4551;
@@ -187,7 +180,7 @@ button:disabled {
   color: var(--accent);
 }
 .eyebrow {
-  font-family: "Oxanium-Medium", var(--font-body);
+  font-family: var(--font-narrow);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 11px;
@@ -244,6 +237,7 @@ a.chip:hover {
 .page-heading h1,
 .page-heading h2 {
   margin: 5px 0 6px;
+  font-family: var(--font-display);
   font-size: 26px;
   letter-spacing: 0.02em;
   font-weight: 600;
@@ -273,6 +267,7 @@ a.chip:hover {
   font-size: 36px;
 }
 .empty-state h3 {
+  font-family: var(--font-display);
   font-size: 18px;
   margin: 12px 0 6px;
 }
@@ -316,7 +311,7 @@ a.chip:hover {
   gap: 8px;
   margin-bottom: 8px;
   color: var(--text);
-  font-family: "Oxanium-Medium", var(--font-body);
+  font-family: var(--font-display);
   font-size: 19px;
 }
 .back-top {
@@ -360,7 +355,7 @@ a.chip:hover {
 }
 .prose h2,
 .prose h3 {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.5;
   margin: 2em 0 0.8em;
@@ -426,12 +421,13 @@ a.chip:hover {
   position: absolute;
   right: 10px;
   top: 8px;
+  font-family: var(--font-body);
   background: #ffffff15;
   border: 1px solid #ffffff25;
   border-radius: 5px;
   color: #cbd5e1;
   padding: 2px 7px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .prose strong {
   font-weight: 650;

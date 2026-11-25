@@ -119,9 +119,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  font:
-    600 27px "Oxanium-Medium",
-    var(--font-body);
+  font: 600 27px var(--font-display);
   letter-spacing: -0.8px;
   white-space: nowrap;
 }

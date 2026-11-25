@@ -219,7 +219,7 @@ kbd {
   font-weight: 400;
 }
 .search-result p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin: 4px 0 0;
 }
@@ -236,6 +236,6 @@ kbd {
   padding-top: 15px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 </style>

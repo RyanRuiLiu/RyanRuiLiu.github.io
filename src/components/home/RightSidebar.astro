@@ -88,7 +88,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     margin-left: auto;
   }
   .notice-card p {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 2;
     color: var(--muted);
     margin: 8px 0 11px;
@@ -97,7 +97,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     color: var(--text);
   }
   .notice-card .text-link {
-    font-size: 11px;
+    font-size: 12px;
     margin-top: 3px;
   }
   .recent-panel ol {
@@ -114,15 +114,13 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
   .recent-number {
     flex: 0 0 18px;
     white-space: nowrap;
-    font:
-      13px "Oxanium-Medium",
-      var(--font-body);
+    font: 13px var(--font-narrow);
     color: #d7b1bf;
     line-height: 1.7;
   }
   .recent-panel h3 {
     margin: 0;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.8;
     font-weight: 400;
   }
@@ -131,19 +129,17 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
   }
   .recent-panel time {
     color: var(--muted);
-    font:
-      9px "Oxanium-Medium",
-      var(--font-body);
+    font: 12px var(--font-narrow);
   }
   .archive-panel > a {
     display: flex;
     justify-content: space-between;
     margin-top: 14px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .archive-panel > a span:last-child {
     color: var(--muted);
-    font-size: 10px;
+    font-size: 12px;
   }
   .archive-panel > a:hover {
     color: var(--accent);
@@ -168,9 +164,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     color: var(--accent);
   }
   .quote-source {
-    font:
-      7px "Oxanium-Medium",
-      var(--font-body);
+    font: 9px var(--font-narrow);
     letter-spacing: 0.14em;
     color: var(--muted);
   }
@@ -192,11 +186,11 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     color: #91ae92;
   }
   .site-notes p {
-    font-size: 11px;
+    font-size: 12px;
     margin: 5px 0;
   }
   .site-notes > span:last-child {
-    font-size: 9px;
+    font-size: 12px;
     opacity: 0.7;
   }
 </style>

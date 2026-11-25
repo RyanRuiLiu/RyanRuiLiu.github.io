@@ -68,7 +68,7 @@ const props = defineProps<{ posts: PostSummary[] }>();
   color: var(--accent);
 }
 .profile-top .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.14em;
 }
 .profile-flower {
@@ -109,6 +109,7 @@ const props = defineProps<{ posts: PostSummary[] }>();
 }
 h2 {
   margin: 7px 0 1px;
+  font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -116,12 +117,12 @@ h2 {
 .profile-role {
   margin: 0;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 12px;
 }
 .profile-bio {
   margin: 15px 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.9;
 }
 .profile-stats {
@@ -139,13 +140,11 @@ h2 {
   color: var(--accent);
 }
 .profile-stats strong {
-  font:
-    19px "Oxanium-Medium",
-    var(--font-body);
+  font: 19px var(--font-narrow);
 }
 .profile-stats span {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .profile-social {
   display: flex;
@@ -171,7 +170,7 @@ h2 {
   border-radius: 8px;
   background: var(--accent-soft);
   color: var(--accent);
-  font-size: 9px;
+  font-size: 12px;
   padding: 7px 4px;
   display: flex;
   align-items: center;

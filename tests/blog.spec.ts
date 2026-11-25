@@ -507,16 +507,11 @@ test("Reading all posts without JavaScript", async ({ browser, baseURL }) => {
   }
 });
 
-test("Configured language, localized search, metadata, and local fonts", async ({
+test("Configured language, localized search, and metadata", async ({
   page,
   request,
 }) => {
-  const fonts: string[] = [];
   const hydrationWarnings: string[] = [];
-  page.on("response", (response) => {
-    if (/\.woff2(?:\?|$)/.test(response.url()) && response.ok())
-      fonts.push(response.url());
-  });
   page.on("console", (message) => {
     if (/hydration.*mismatch/i.test(message.text()))
       hydrationWarnings.push(message.text());
@@ -551,23 +546,14 @@ test("Configured language, localized search, metadata, and local fonts", async (
   );
   await page.keyboard.press("Escape");
 
-  await page.evaluate(() => document.fonts.ready);
-  const family = "ZaoZiGongFangYueYuan";
-  const loaded = await page.evaluate(() =>
-    [...document.fonts]
-      .filter((face) => face.status === "loaded")
-      .map((face) => face.family.replaceAll('"', "")),
+  await expect(page.locator("body")).toHaveCSS(
+    "font-family",
+    /PingFang SC|Microsoft YaHei/,
   );
-  expect(loaded).toContain(family);
-  expect(loaded).toContain("Oxanium-Medium");
-  expect(fonts.length).toBeGreaterThan(0);
-  expect(
-    fonts.every((url) => new URL(url).origin === new URL(page.url()).origin),
-  ).toBe(true);
   await page.goto("/posts/hello-kanade/");
   await expect(page.locator("#article-body h2").first()).toHaveCSS(
     "font-family",
-    new RegExp(family),
+    /STZhongsong|Songti SC|SimSun/,
   );
 
   const rss = await (await request.get("/rss.xml")).text();
