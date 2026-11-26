@@ -28,20 +28,11 @@ jobs:
   deploy:
     needs: docker
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
     concurrency:
       group: deploy-personal-website
       cancel-in-progress: false
-    steps:
-      - name: Deploy
-        env:
-          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
-        run: |
-          body="{\"ref\":\"${GITHUB_REF}\",\"sha\":\"${GITHUB_SHA}\"}"
-          signature=$(printf '%s' "$body" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | awk '{print $NF}')
-          curl -fsS --max-time 300 --retry 5 --retry-all-errors -X POST \
-            -H "Content-Type: application/json" \
-            -H "X-Hub-Signature-256: sha256=$signature" \
-            --data-binary "$body" \
-            "https://ryanliu.cn/hooks/deploy-personal-website"
+    uses: RyanRuiLiu/.github/.github/workflows/deploy.yml@655a30434585fe049b55d25aaee77ad1caeddcc8
+    with:
+      hook: deploy-personal-website
+    secrets:
+      WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
