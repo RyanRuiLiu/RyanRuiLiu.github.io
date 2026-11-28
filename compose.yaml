@@ -1,6 +1,6 @@
 services:
   personal-website:
-    image: ${PERSONAL_WEBSITE_IMAGE:-personal-website}:${TAG:-local}
+    image: ${IMAGE:-personal-website}:${TAG:-local}
     build:
       context: .
       dockerfile: Dockerfile
