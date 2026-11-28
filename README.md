@@ -141,3 +141,10 @@ pnpm test
 镜像构建使用 `pnpm fetch` 与离线安装，构建阶段写入 `SITE_URL`，并开启 `PUBLIC_SHOW_ICP`，因此备案信息只在自建域名部署中显示。
 
 CI 位于 `.github/workflows/ci.yml`，执行格式检查、脚本与组件检查、样式检查、Markdown 检查、依赖审计、类型检查、构建与 Playwright 测试。
+
+### Docker 运行
+
+```bash
+cp .env.example .env   # 按需修改；该文件不入库
+docker compose up -d --build
+```
