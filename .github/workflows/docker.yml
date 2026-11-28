@@ -14,7 +14,7 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
-    uses: RyanRuiLiu/.github/.github/workflows/docker.yml@9e85e2e21780ed63ba09054f504a8d2139d87a9d
+    uses: RyanRuiLiu/.github/.github/workflows/docker.yml@d323561f4e81810819c2bead813b660253a31e55
     with:
       tags: |
         type=ref,event=branch
@@ -31,7 +31,7 @@ jobs:
     concurrency:
       group: deploy-personal-website
       cancel-in-progress: false
-    uses: RyanRuiLiu/.github/.github/workflows/deploy.yml@169a0eb839dd876dbe30a5dd9aa5bd843c73190b
+    uses: RyanRuiLiu/.github/.github/workflows/deploy.yml@d323561f4e81810819c2bead813b660253a31e55
     with:
       hook: deploy-personal-website
     secrets:

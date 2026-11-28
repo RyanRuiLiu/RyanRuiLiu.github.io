@@ -10,4 +10,4 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    uses: RyanRuiLiu/.github/.github/workflows/dependabot-auto-merge.yml@5598a5c0984716fad74cefd89dc806c97c0a24a3
+    uses: RyanRuiLiu/.github/.github/workflows/dependabot-auto-merge.yml@d323561f4e81810819c2bead813b660253a31e55
