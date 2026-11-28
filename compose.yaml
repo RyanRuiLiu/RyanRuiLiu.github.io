@@ -1,6 +1,9 @@
 services:
   personal-website:
-    image: crpi-5rhaq5x8z5ec9tig-vpc.cn-hangzhou.personal.cr.aliyuncs.com/ryanruiliu/ryanruiliu.github.io:${TAG:?TAG must be set}
+    image: ${PERSONAL_WEBSITE_IMAGE:-personal-website}:${TAG:-local}
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     read_only: true
     tmpfs:
